@@ -57,7 +57,7 @@ export function DimensionBars({ dimensions, scores, compact = false }: Dimension
             <span className={`${textSize} font-medium text-gray-600 w-16 truncate`}>{dim.name}</span>
             <div className={`flex-1 ${barHeight} bg-gray-200 rounded-full overflow-hidden`}>
               <div
-                className={`h-full bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full transition-all duration-600 ease-out`}
+                className={`h-full bg-gradient-to-r from-red-500 to-pink-600 rounded-full transition-all duration-600 ease-out`}
                 style={{
                   width: animated ? `${scorePercent}%` : '0%',
                   transitionDelay: `${index * 50}ms`,

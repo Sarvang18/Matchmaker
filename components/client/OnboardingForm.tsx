@@ -120,12 +120,12 @@ export function OnboardingForm() {
 
   if (isSuccess) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 p-4">
-        <Card className="max-w-md w-full p-8 text-center">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-red-50 to-pink-50 p-4">
+        <Card className="max-w-md w-full p-8 text-center shadow-lg border border-gray-100">
           <div className="flex justify-center mb-6">
             <CheckCircle className="w-20 h-20 text-green-500" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Welcome to TDC!</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'Georgia, serif' }}>Welcome to BYvowed!</h2>
           <p className="text-gray-600 mb-6">
             Your profile has been submitted successfully. Our matchmaker will review it and get in touch with you soon.
           </p>
@@ -138,11 +138,11 @@ export function OnboardingForm() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-red-50 to-pink-50 py-8 px-4">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">Join The Date Crew</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-2" style={{ fontFamily: 'Georgia, serif' }}>Join BYvowed</h1>
           <p className="text-gray-600">Let's find your perfect match</p>
         </div>
 
@@ -153,7 +153,7 @@ export function OnboardingForm() {
               <div
                 key={s}
                 className={`flex-1 h-2 rounded-full mx-1 transition-colors ${
-                  s <= step ? 'bg-purple-600' : 'bg-gray-200'
+                  s <= step ? 'bg-gradient-to-r from-red-500 to-pink-600' : 'bg-gray-200'
                 }`}
               />
             ))}
@@ -162,10 +162,10 @@ export function OnboardingForm() {
         </div>
 
         {/* Form Card */}
-        <Card className="p-6 md:p-8">
+        <Card className="p-6 md:p-8 shadow-lg border border-gray-100">
           {step === 1 && (
             <div className="space-y-4">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">Personal Information</h2>
+              <h2 className="text-xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'Georgia, serif' }}>Personal Information</h2>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium mb-1">First Name *</label>
@@ -230,7 +230,7 @@ export function OnboardingForm() {
 
           {step === 2 && (
             <div className="space-y-4">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">Location & Education</h2>
+              <h2 className="text-xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'Georgia, serif' }}>Location & Education</h2>
               <div>
                 <label className="block text-sm font-medium mb-1">Country *</label>
                 <Input value={formData.country} onChange={(e) => updateField('country', e.target.value)} />
@@ -252,7 +252,7 @@ export function OnboardingForm() {
 
           {step === 3 && (
             <div className="space-y-4">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">Professional & Family</h2>
+              <h2 className="text-xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'Georgia, serif' }}>Professional & Family</h2>
               <div>
                 <label className="block text-sm font-medium mb-1">Current Company *</label>
                 <Input value={formData.currentCompany} onChange={(e) => updateField('currentCompany', e.target.value)} />
@@ -293,7 +293,7 @@ export function OnboardingForm() {
 
           {step === 4 && (
             <div className="space-y-4">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">Lifestyle & Contact</h2>
+              <h2 className="text-xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'Georgia, serif' }}>Lifestyle & Contact</h2>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium mb-1">Dietary Preference *</label>
@@ -412,7 +412,7 @@ export function OnboardingForm() {
             {step < 4 ? (
               <Button
                 onClick={() => setStep(step + 1)}
-                className="bg-purple-600 hover:bg-purple-700"
+                className="bg-gradient-to-r from-red-500 to-pink-600 hover:shadow-xl transition-all"
               >
                 Next
                 <ChevronRight className="w-4 h-4 ml-2" />
@@ -421,7 +421,7 @@ export function OnboardingForm() {
               <Button
                 onClick={handleSubmit}
                 disabled={isSubmitting}
-                className="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700"
+                className="bg-gradient-to-r from-red-500 to-pink-600 hover:shadow-xl transition-all"
               >
                 {isSubmitting ? 'Submitting...' : 'Submit'}
               </Button>

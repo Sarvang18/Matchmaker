@@ -72,7 +72,7 @@ export function NotesPanel({ clientId, initialNotes }: NotesPanelProps) {
 
   return (
     <Card className="p-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">Notes</h3>
+      <h3 className="text-lg font-semibold text-gray-900 mb-4" style={{ fontFamily: 'Georgia, serif' }}>Notes</h3>
 
       {/* Add Note Form */}
       <div className="mb-6">
@@ -86,7 +86,7 @@ export function NotesPanel({ clientId, initialNotes }: NotesPanelProps) {
         <Button
           onClick={handleAddNote}
           disabled={isAdding || !newNote.trim()}
-          className="w-full bg-purple-600 hover:bg-purple-700"
+          className="w-full bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700"
         >
           {isAdding ? 'Adding...' : 'Add Note'}
         </Button>

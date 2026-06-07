@@ -20,12 +20,12 @@ interface KanbanBoardProps {
 
 const columns: { id: ClientStatus; label: string; color: string; bgColor: string }[] = [
   { id: 'ONBOARDED', label: 'Onboarded', color: 'border-gray-400', bgColor: 'bg-gray-50' },
-  { id: 'ACTIVE', label: 'Active', color: 'border-blue-500', bgColor: 'bg-blue-50' },
-  { id: 'MATCH_SENT', label: 'Match Sent', color: 'border-amber-500', bgColor: 'bg-amber-50' },
-  { id: 'MUTUAL_INTEREST', label: 'Mutual Interest', color: 'border-purple-500', bgColor: 'bg-purple-50' },
-  { id: 'MEETING_SCHEDULED', label: 'Meeting Scheduled', color: 'border-teal-500', bgColor: 'bg-teal-50' },
+  { id: 'ACTIVE', label: 'Active', color: 'border-red-500', bgColor: 'bg-red-50' },
+  { id: 'MATCH_SENT', label: 'Match Sent', color: 'border-pink-500', bgColor: 'bg-pink-50' },
+  { id: 'MUTUAL_INTEREST', label: 'Mutual Interest', color: 'border-rose-500', bgColor: 'bg-rose-50' },
+  { id: 'MEETING_SCHEDULED', label: 'Meeting Scheduled', color: 'border-red-600', bgColor: 'bg-red-50' },
   { id: 'CLOSED_WON', label: 'Closed Won', color: 'border-green-500', bgColor: 'bg-green-50' },
-  { id: 'CLOSED_LOST', label: 'Closed Lost', color: 'border-red-500', bgColor: 'bg-red-50' },
+  { id: 'CLOSED_LOST', label: 'Closed Lost', color: 'border-gray-500', bgColor: 'bg-gray-50' },
 ];
 
 export function KanbanBoard({ clients: initialClients, onClientUpdate }: KanbanBoardProps) {
@@ -95,10 +95,10 @@ export function KanbanBoard({ clients: initialClients, onClientUpdate }: KanbanB
             return (
               <div key={column.id} className="flex flex-col">
                 {/* Column Header */}
-                <div className={`mb-3 p-3 rounded-lg ${column.bgColor} border-t-4 ${column.color} shadow-sm`}>
+                <div className={`mb-3 p-3 rounded-xl ${column.bgColor} border-t-4 ${column.color} shadow-md`}>
                   <div className="flex items-center justify-between">
-                    <h3 className="font-semibold text-sm text-gray-900 truncate">{column.label}</h3>
-                    <Badge variant="outline" className="bg-white/70 text-xs ml-2">
+                    <h3 className="font-semibold text-sm text-gray-900 truncate" style={{ fontFamily: 'Georgia, serif' }}>{column.label}</h3>
+                    <Badge variant="outline" className="bg-white text-xs ml-2 font-bold">
                       {columnClients.length}
                     </Badge>
                   </div>
@@ -110,8 +110,8 @@ export function KanbanBoard({ clients: initialClients, onClientUpdate }: KanbanB
                     <div
                       ref={provided.innerRef}
                       {...provided.droppableProps}
-                      className={`flex-1 min-h-[500px] max-h-[70vh] overflow-y-auto bg-gray-50 rounded-lg p-2 border-2 ${
-                        snapshot.isDraggingOver ? 'border-purple-300 bg-purple-50' : 'border-gray-200'
+                      className={`flex-1 min-h-[500px] max-h-[70vh] overflow-y-auto bg-gray-50 rounded-xl p-2 border-2 ${
+                        snapshot.isDraggingOver ? 'border-red-300 bg-red-50' : 'border-gray-200'
                       } transition-colors scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100`}
                     >
                       <div className="space-y-2">
@@ -128,14 +128,14 @@ export function KanbanBoard({ clients: initialClients, onClientUpdate }: KanbanB
                                   {...provided.draggableProps}
                                   {...provided.dragHandleProps}
                                   onClick={() => handleCardClick(client.id)}
-                                  className={`bg-white p-3 rounded-lg border border-gray-200 shadow-sm cursor-pointer hover:shadow-md transition-all duration-200 ${
-                                    snapshot.isDragging ? 'shadow-xl ring-2 ring-purple-400 scale-105' : ''
+                                  className={`bg-white p-3 rounded-xl border border-gray-200 shadow-sm cursor-pointer hover:shadow-lg transition-all duration-200 ${
+                                    snapshot.isDragging ? 'shadow-xl ring-2 ring-red-400 scale-105' : ''
                                   }`}
                                 >
                                   {/* Avatar and Name */}
                                   <div className="flex items-center gap-2 mb-2">
                                     <Avatar
-                                      className={`${getInitialsColor(client.firstName)} text-white h-8 w-8 flex-shrink-0`}
+                                      className="bg-gradient-to-br from-red-500 to-pink-600 text-white h-8 w-8 flex-shrink-0 shadow-md"
                                     >
                                       <AvatarFallback className="bg-transparent text-white font-semibold text-xs">
                                         {getInitials(client.firstName, client.lastName)}

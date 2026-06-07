@@ -46,7 +46,7 @@ const getLabelColor = (label: string) => {
     case 'DREAM':
       return 'bg-yellow-100 text-yellow-700 border-yellow-300';
     case 'HIGH':
-      return 'bg-purple-100 text-purple-700 border-purple-300';
+      return 'bg-red-100 text-red-700 border-red-300';
     case 'COMPATIBLE':
       return 'bg-green-100 text-green-700 border-green-300';
     default:
@@ -156,10 +156,10 @@ The Date Crew Team`);
             {/* Profile Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* Client Card */}
-              <div className="flex flex-col items-center p-4 bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg border border-purple-200">
+              <div className="flex flex-col items-center p-4 bg-gradient-to-br from-red-50 to-pink-50 rounded-lg border border-red-200">
                 <Avatar className="w-16 h-16 mb-2">
                   <AvatarImage src={match.client.photoUrl || undefined} />
-                  <AvatarFallback className="bg-purple-200">
+                  <AvatarFallback className="bg-red-200">
                     {match.client.firstName[0]}{match.client.lastName[0]}
                   </AvatarFallback>
                 </Avatar>
@@ -189,9 +189,9 @@ The Date Crew Team`);
             {/* Score and Label */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 py-3 bg-gray-50 rounded-lg">
               <div className="flex items-center gap-2">
-                <ArrowDownUp className="w-5 h-5 text-purple-500" />
+                <ArrowDownUp className="w-5 h-5 text-red-500" />
                 <span className="text-sm text-gray-600">Compatibility Score:</span>
-                <span className="text-2xl font-bold text-purple-600">
+                <span className="text-2xl font-bold text-red-600">
                   {match.totalScore}/100
                 </span>
               </div>
@@ -211,7 +211,7 @@ The Date Crew Team`);
               {isGenerating && (
                 <div className="flex items-center justify-center py-12 bg-gray-50 rounded-lg">
                   <div className="text-center">
-                    <Loader2 className="w-8 h-8 mx-auto mb-3 text-purple-500 animate-spin" />
+                    <Loader2 className="w-8 h-8 mx-auto mb-3 text-red-500 animate-spin" />
                     <p className="text-sm text-gray-600">
                       Generating personalised intro email...
                     </p>
@@ -268,7 +268,7 @@ The Date Crew Team`);
             <Button
               onClick={handleSend}
               disabled={!emailReady || isSending}
-              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+              className="bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700"
             >
               {isSending ? (
                 <>

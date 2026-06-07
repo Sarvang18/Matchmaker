@@ -106,7 +106,7 @@ export function PodiumMatches({ matches, onSendMatch }: PodiumMatchesProps) {
 
               {/* Avatar */}
               <div className="flex justify-center mt-4 mb-4">
-                <Avatar className="w-24 h-24 ring-4 ring-offset-2 ring-purple-200">
+                <Avatar className="w-24 h-24 ring-4 ring-offset-2 ring-red-200">
                   <AvatarImage src={match.candidate.photoUrl || undefined} />
                   <AvatarFallback className="text-2xl font-semibold">
                     {match.candidate.firstName[0]}{match.candidate.lastName[0]}
@@ -128,11 +128,11 @@ export function PodiumMatches({ matches, onSendMatch }: PodiumMatchesProps) {
               <div className="mb-4">
                 <div className="flex items-center justify-between mb-1">
                   <span className="text-sm font-medium text-gray-700">Match Score</span>
-                  <span className="text-2xl font-bold text-purple-600">{Math.round(match.totalScore)}</span>
+                  <span className="text-2xl font-bold text-red-600">{Math.round(match.totalScore)}</span>
                 </div>
                 <div className="h-3 bg-gray-100 rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full transition-all duration-700 ease-out"
+                    className="h-full bg-gradient-to-r from-red-500 to-pink-600 rounded-full transition-all duration-700 ease-out"
                     style={{ width: `${match.totalScore}%` }}
                   />
                 </div>
@@ -148,26 +148,26 @@ export function PodiumMatches({ matches, onSendMatch }: PodiumMatchesProps) {
               {/* Key Details */}
               <div className="space-y-2 mb-4 text-sm">
                 <div className="flex items-center gap-2 text-gray-700">
-                  <GraduationCap className="w-4 h-4 text-purple-500 flex-shrink-0" />
+                  <GraduationCap className="w-4 h-4 text-red-500 flex-shrink-0" />
                   <span className="truncate">{match.candidate.designation}</span>
                 </div>
                 <div className="flex items-center gap-2 text-gray-700">
-                  <Briefcase className="w-4 h-4 text-purple-500 flex-shrink-0" />
+                  <Briefcase className="w-4 h-4 text-red-500 flex-shrink-0" />
                   <span className="truncate">{match.candidate.currentCompany}</span>
                 </div>
                 <div className="flex items-center gap-2 text-gray-700">
-                  <IndianRupee className="w-4 h-4 text-purple-500 flex-shrink-0" />
+                  <IndianRupee className="w-4 h-4 text-red-500 flex-shrink-0" />
                   <span>{formatIncome(match.candidate.income)}</span>
                 </div>
                 <div className="flex items-center gap-2 text-gray-700">
-                  <MapPin className="w-4 h-4 text-purple-500 flex-shrink-0" />
+                  <MapPin className="w-4 h-4 text-red-500 flex-shrink-0" />
                   <span>{match.candidate.religion} • {match.candidate.caste}</span>
                 </div>
               </div>
 
               {/* Dimension Scores */}
               <div className="pt-4 border-t">
-                <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">
+                <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3" style={{ fontFamily: 'Georgia, serif' }}>
                   Compatibility Breakdown
                 </h4>
                 <DimensionBars scores={match.dimensionScores} compact />
@@ -176,12 +176,12 @@ export function PodiumMatches({ matches, onSendMatch }: PodiumMatchesProps) {
               {/* AI Explanation */}
               {match.aiExplanation && (
                 <div className="pt-4 mt-4 border-t">
-                  <div className="flex items-start gap-2 p-3 bg-purple-50 bg-opacity-50 rounded-lg">
+                  <div className="flex items-start gap-2 p-3 bg-red-50 bg-opacity-50 rounded-lg">
                     <span className="text-lg">✨</span>
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="text-xs font-semibold text-purple-700 uppercase">AI Insight</span>
-                        <span className="text-xs text-purple-500">Gemini</span>
+                        <span className="text-xs font-semibold text-red-700 uppercase">AI Insight</span>
+                        <span className="text-xs text-red-500">Gemini</span>
                       </div>
                       <p className="text-sm text-gray-700 italic leading-relaxed">
                         {match.aiExplanation}
@@ -196,7 +196,7 @@ export function PodiumMatches({ matches, onSendMatch }: PodiumMatchesProps) {
                 <div className="pt-4 mt-4 border-t">
                   <Button
                     onClick={() => onSendMatch(match)}
-                    className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+                    className="w-full bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700"
                   >
                     <Send className="w-4 h-4 mr-2" />
                     Send Match

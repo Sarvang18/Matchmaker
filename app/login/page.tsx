@@ -5,7 +5,7 @@ import { signIn } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Heart, Mail, Lock, AlertCircle } from 'lucide-react';
+import { Heart, Mail, Lock, AlertCircle, Sparkles, TrendingUp, Users } from 'lucide-react';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -44,155 +44,190 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex">
-      {/* Left Side - Branding */}
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-pink-600 via-purple-600 to-indigo-700 p-12 flex-col justify-between relative overflow-hidden">
-        {/* Decorative elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+      {/* Left Side - Premium Branding */}
+      <div className="hidden lg:flex lg:w-1/2 p-12 flex-col justify-between relative overflow-hidden">
+        {/* Animated gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-red-500 via-pink-500 to-rose-400"></div>
+        
+        {/* Decorative floating elements */}
+        <div className="absolute top-20 right-20 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-white/5 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s' }} />
         
         {/* Content */}
-        <div className="relative z-10">
-          <div className="flex items-center gap-3 mb-2">
-            <div className="bg-white/20 backdrop-blur-sm p-3 rounded-2xl">
-              <Heart className="w-8 h-8 text-white" fill="white" />
+        <div className="relative z-10 animate-fade-in">
+          <div className="flex items-center gap-4 mb-3">
+            <div className="bg-white/20 backdrop-blur-md p-4 rounded-3xl shadow-2xl ring-2 ring-white/30">
+              <Heart className="w-10 h-10 text-white drop-shadow-lg" fill="white" strokeWidth={0} />
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-white">The Date Crew</h1>
-              <p className="text-white/80 text-sm">Professional Matchmaking</p>
+              <h1 className="text-4xl font-black text-white drop-shadow-lg tracking-tight" style={{ fontFamily: 'Georgia, serif' }}>BYvowed</h1>
+              <div className="flex items-center gap-2 mt-1">
+                <Sparkles className="w-4 h-4 text-yellow-300" />
+                <p className="text-white/90 text-sm font-semibold">Premium Matchmaking Platform</p>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="relative z-10 space-y-6">
-          <h2 className="text-4xl font-bold text-white leading-tight">
-            Connecting Hearts,<br />
-            Creating Futures
-          </h2>
-          <p className="text-white/90 text-lg">
-            Your internal dashboard for managing client relationships and creating meaningful connections.
-          </p>
+        <div className="relative z-10 space-y-8 animate-fade-in" style={{ animationDelay: '200ms' }}>
+          <div>
+            <h2 className="text-5xl font-black text-white leading-tight drop-shadow-lg mb-4">
+              Connecting Hearts,<br />
+              Creating Futures ✨
+            </h2>
+            <p className="text-white/95 text-xl font-medium">
+              Your AI-powered dashboard for managing client relationships and creating meaningful connections.
+            </p>
+          </div>
           
-          {/* Stats */}
-          <div className="flex gap-8 pt-4">
-            <div>
-              <div className="text-3xl font-bold text-white">500+</div>
-              <div className="text-white/70 text-sm">Success Stories</div>
+          {/* Premium Stats Cards */}
+          <div className="grid grid-cols-2 gap-4">
+            <div className="glass-dark rounded-2xl p-5 hover-lift">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="p-2 bg-green-500/20 rounded-xl">
+                  <TrendingUp className="w-5 h-5 text-green-300" />
+                </div>
+                <div className="text-3xl font-black text-white">500+</div>
+              </div>
+              <div className="text-white/80 text-sm font-semibold">Success Stories</div>
             </div>
-            <div>
-              <div className="text-3xl font-bold text-white">95%</div>
-              <div className="text-white/70 text-sm">Satisfaction Rate</div>
+            <div className="glass-dark rounded-2xl p-5 hover-lift">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="p-2 bg-blue-500/20 rounded-xl">
+                  <Users className="w-5 h-5 text-blue-300" />
+                </div>
+                <div className="text-3xl font-black text-white">95%</div>
+              </div>
+              <div className="text-white/80 text-sm font-semibold">Satisfaction Rate</div>
             </div>
           </div>
         </div>
 
-        <div className="relative z-10 text-white/60 text-sm">
+        <div className="relative z-10 text-white/70 text-sm font-medium animate-fade-in" style={{ animationDelay: '400ms' }}>
           © 2024 The Date Crew. All rights reserved.
         </div>
       </div>
 
-      {/* Right Side - Login Form */}
-      <div className="flex-1 flex items-center justify-center p-8 bg-gray-50">
-        <div className="w-full max-w-md">
+      {/* Right Side - Premium Login Form */}
+      <div className="flex-1 flex items-center justify-center p-8">
+        <div className="w-full max-w-md animate-scale-in">
           {/* Mobile Logo */}
-          <div className="lg:hidden text-center mb-8">
-            <div className="inline-flex items-center justify-center bg-gradient-to-r from-pink-500 to-purple-600 p-3 rounded-2xl mb-3">
-              <Heart className="w-6 h-6 text-white" fill="white" />
+          <div className="lg:hidden text-center mb-10">
+            <div className="inline-flex items-center justify-center gradient-primary p-4 rounded-3xl mb-4 shadow-xl">
+              <Heart className="w-8 h-8 text-white" fill="white" strokeWidth={0} />
             </div>
-            <h1 className="text-2xl font-bold text-gray-900">The Date Crew</h1>
-            <p className="text-gray-600 text-sm">Matchmaker Portal</p>
+            <h1 className="text-3xl font-black text-gradient" style={{ fontFamily: 'Georgia, serif' }}>BYvowed</h1>
+            <p className="text-gray-600 text-sm font-semibold mt-1">Matchmaker Portal</p>
           </div>
 
-          {/* Form Card */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+          {/* Premium Form Card */}
+          <div className="glass-card rounded-3xl p-10 shadow-2xl border-2 border-white/40">
             <div className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Welcome back</h2>
-              <p className="text-gray-600">Sign in to access your dashboard</p>
+              <h2 className="text-3xl font-black text-gradient mb-3" style={{ fontFamily: 'Georgia, serif' }}>Welcome back</h2>
+              <p className="text-gray-600 text-base font-medium">Sign in to access your premium dashboard</p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-5">
-              {/* Email Field */}
-              <div className="space-y-2">
-                <label htmlFor="email" className="text-sm font-medium text-gray-700 flex items-center gap-2">
-                  <Mail className="w-4 h-4 text-gray-400" />
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Premium Email Field */}
+              <div className="space-y-3">
+                <label htmlFor="email" className="text-sm font-bold text-gray-900 flex items-center gap-2">
+                  <div className="p-1 bg-red-100 rounded-lg">
+                    <Mail className="w-4 h-4 text-red-600" />
+                  </div>
                   Email Address
                 </label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="admin@tdc.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="h-12 px-4 border-gray-200 focus:border-purple-500 focus:ring-purple-500"
-                  disabled={isLoading}
-                />
+                <div className="relative">
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="admin@tdc.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="h-14 px-5 bg-white/60 backdrop-blur-sm border-2 border-white/60 focus:border-red-400 focus:ring-4 focus:ring-red-100 rounded-xl text-base font-medium shadow-sm"
+                    disabled={isLoading}
+                  />
+                </div>
               </div>
 
-              {/* Password Field */}
-              <div className="space-y-2">
-                <label htmlFor="password" className="text-sm font-medium text-gray-700 flex items-center gap-2">
-                  <Lock className="w-4 h-4 text-gray-400" />
+              {/* Premium Password Field */}
+              <div className="space-y-3">
+                <label htmlFor="password" className="text-sm font-bold text-gray-900 flex items-center gap-2">
+                  <div className="p-1 bg-pink-100 rounded-lg">
+                    <Lock className="w-4 h-4 text-pink-600" />
+                  </div>
                   Password
                 </label>
-                <Input
-                  id="password"
-                  type="password"
-                  placeholder="Enter your password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  className="h-12 px-4 border-gray-200 focus:border-purple-500 focus:ring-purple-500"
-                  disabled={isLoading}
-                />
+                <div className="relative">
+                  <Input
+                    id="password"
+                    type="password"
+                    placeholder="Enter your password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    className="h-14 px-5 bg-white/60 backdrop-blur-sm border-2 border-white/60 focus:border-pink-400 focus:ring-4 focus:ring-pink-100 rounded-xl text-base font-medium shadow-sm"
+                    disabled={isLoading}
+                  />
+                </div>
               </div>
 
-              {/* Error Message */}
+              {/* Premium Error Message */}
               {error && (
-                <div className="flex items-start gap-3 p-4 bg-red-50 border border-red-200 rounded-lg">
-                  <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+                <div className="flex items-start gap-3 p-5 bg-red-50/80 backdrop-blur-sm border-2 border-red-200 rounded-2xl animate-scale-in">
+                  <div className="p-2 bg-red-100 rounded-xl">
+                    <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0" />
+                  </div>
                   <div>
-                    <p className="text-sm font-medium text-red-900">{error}</p>
-                    <p className="text-xs text-red-700 mt-1">Please check your credentials and try again.</p>
+                    <p className="text-sm font-bold text-red-900">{error}</p>
+                    <p className="text-xs text-red-700 mt-1 font-medium">Please check your credentials and try again.</p>
                   </div>
                 </div>
               )}
 
-              {/* Submit Button */}
+              {/* Premium Submit Button */}
               <Button
                 type="submit"
-                className="w-full h-12 bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white font-semibold text-base shadow-lg shadow-purple-500/30 transition-all duration-200"
+                className="w-full h-14 gradient-primary hover:scale-105 text-white font-bold text-base shadow-2xl rounded-2xl transition-all duration-300 border-0"
                 disabled={isLoading}
               >
                 {isLoading ? (
-                  <div className="flex items-center gap-2">
-                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                    Signing in...
+                  <div className="flex items-center gap-3">
+                    <div className="w-5 h-5 border-3 border-white/30 border-t-white rounded-full animate-spin" />
+                    <span>Signing in...</span>
                   </div>
                 ) : (
-                  'Sign In'
+                  <div className="flex items-center gap-2">
+                    <span>Sign In</span>
+                    <Sparkles className="w-5 h-5" />
+                  </div>
                 )}
               </Button>
             </form>
 
             {/* Footer */}
-            <div className="mt-6 pt-6 border-t border-gray-100">
-              <p className="text-center text-xs text-gray-500">
-                Internal use only • Secure access required
+            <div className="mt-8 pt-6 border-t-2 border-white/40">
+              <p className="text-center text-xs text-gray-600 font-semibold">
+                🔒 Internal use only • Secure access required
               </p>
             </div>
           </div>
 
-          {/* Demo Credentials */}
-          <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-            <p className="text-xs font-medium text-blue-900 mb-2">Demo Credentials:</p>
-            <div className="text-xs text-blue-700 space-y-1">
-              <div className="flex justify-between">
+          {/* Premium Demo Credentials */}
+          <div className="mt-6 glass-card rounded-2xl p-5 border border-white/40">
+            <p className="text-xs font-black text-red-900 mb-3 flex items-center gap-2" style={{ fontFamily: 'Georgia, serif' }}>
+              <Sparkles className="w-4 h-4" />
+              Demo Credentials
+            </p>
+            <div className="text-xs text-gray-700 space-y-2 font-semibold">
+              <div className="flex justify-between items-center bg-white/50 p-2 rounded-lg">
                 <span>Email:</span>
-                <code className="bg-white px-2 py-0.5 rounded">admin@tdc.com</code>
+                <code className="bg-red-100 text-red-700 px-3 py-1 rounded-lg font-mono">admin@tdc.com</code>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center bg-white/50 p-2 rounded-lg">
                 <span>Password:</span>
-                <code className="bg-white px-2 py-0.5 rounded">tdc@2025</code>
+                <code className="bg-red-100 text-red-700 px-3 py-1 rounded-lg font-mono">tdc@2025</code>
               </div>
             </div>
           </div>

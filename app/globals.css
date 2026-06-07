@@ -23,7 +23,7 @@
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
-    --radius: 0.5rem;
+    --radius: 0.75rem;
   }
 
   .dark {
@@ -54,22 +54,119 @@
     border-color: hsl(var(--border));
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    background: #f9fafb;
+    min-height: 100vh;
   }
 }
 
-/* Custom scrollbar styling */
+/* Tremor-inspired Professional Design System */
 @layer utilities {
-  .scrollbar-thin::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+  /* Clean Card Styles */
+  .tremor-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   }
   
-  .scrollbar-thin::-webkit-scrollbar-track {
-    @apply bg-gray-100 rounded;
+  .tremor-card-hover {
+    transition: all 0.2s ease;
   }
   
-  .scrollbar-thin::-webkit-scrollbar-thumb {
-    @apply bg-gray-300 rounded hover:bg-gray-400;
+  .tremor-card-hover:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border-color: #d1d5db;
+  }
+
+  /* Data Visualization Colors - Tremor Palette */
+  .tremor-blue { color: #3b82f6; }
+  .tremor-bg-blue { background-color: #eff6ff; }
+  .tremor-border-blue { border-color: #3b82f6; }
+  
+  .tremor-emerald { color: #10b981; }
+  .tremor-bg-emerald { background-color: #ecfdf5; }
+  .tremor-border-emerald { border-color: #10b981; }
+  
+  .tremor-violet { color: #8b5cf6; }
+  .tremor-bg-violet { background-color: #f5f3ff; }
+  .tremor-border-violet { border-color: #8b5cf6; }
+  
+  .tremor-amber { color: #f59e0b; }
+  .tremor-bg-amber { background-color: #fffbeb; }
+  .tremor-border-amber { border-color: #f59e0b; }
+
+  /* Typography - Data-focused */
+  .tremor-metric {
+    @apply text-3xl font-semibold text-gray-900 tracking-tight;
+  }
+  
+  .tremor-label {
+    @apply text-sm font-medium text-gray-500;
+  }
+  
+  .tremor-heading {
+    @apply text-lg font-semibold text-gray-900;
+  }
+
+  /* Progress Bars */
+  .tremor-progress-bar {
+    height: 0.5rem;
+    background-color: #f3f4f6;
+    border-radius: 9999px;
+    overflow: hidden;
+  }
+  
+  .tremor-progress-fill {
+    height: 100%;
+    transition: width 0.3s ease;
+  }
+
+  /* Badge Styles */
+  .tremor-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium;
+  }
+
+  /* Custom scrollbar */
+  .tremor-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .tremor-scrollbar::-webkit-scrollbar-track {
+    background: #f3f4f6;
+    border-radius: 4px;
+  }
+  
+  .tremor-scrollbar::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 4px;
+  }
+  
+  .tremor-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+
+  /* Smooth transitions */
+  .tremor-transition {
+    transition: all 0.15s ease-in-out;
+  }
+  
+  /* Data Table Styles */
+  .tremor-table-header {
+    @apply bg-gray-50 border-b border-gray-200;
+  }
+  
+  .tremor-table-cell {
+    @apply px-4 py-3.5 text-sm text-gray-900;
+  }
+  
+  .tremor-table-row {
+    @apply border-b border-gray-100 hover:bg-gray-50 transition-colors;
+  }
+
+  /* Status Indicators */
+  .tremor-status-dot {
+    @apply w-2 h-2 rounded-full;
   }
 }

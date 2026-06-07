@@ -81,13 +81,20 @@ export function PortalProfile({
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-red-50 to-pink-50">
       {/* Header */}
-      <div className="bg-[#1a1a2e] px-6 py-8 text-center">
-        <h1 className="text-white text-2xl font-light tracking-[0.2em] mb-2">
-          THE DATE CREW
-        </h1>
-        <p className="text-[#a0a0b8] text-xs tracking-widest">
+      <div className="bg-white border-b border-gray-100 px-6 py-8 text-center shadow-sm">
+        <div className="flex items-center justify-center gap-3 mb-2">
+          <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-pink-600 rounded-lg flex items-center justify-center shadow-md">
+            <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
+            </svg>
+          </div>
+          <h1 className="text-2xl font-bold text-gray-900" style={{ fontFamily: 'Georgia, serif' }}>
+            BYvowed
+          </h1>
+        </div>
+        <p className="text-gray-600 text-sm tracking-wide">
           MATCHMAKING · CURATED FOR YOU
         </p>
       </div>
@@ -105,16 +112,16 @@ export function PortalProfile({
         </div>
 
         {/* Candidate Profile */}
-        <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-100 mb-6">
+        <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-100 mb-6">
           {/* Avatar and Name */}
           <div className="flex flex-col items-center text-center mb-6">
-            <Avatar className="w-20 h-20 mb-4">
+            <Avatar className="w-20 h-20 mb-4 ring-4 ring-red-100">
               <AvatarImage src={candidate.photoUrl || undefined} />
-              <AvatarFallback className="text-2xl bg-purple-100">
+              <AvatarFallback className="text-2xl bg-gradient-to-br from-red-500 to-pink-600 text-white">
                 {candidate.firstName[0]}{candidate.lastName[0]}
               </AvatarFallback>
             </Avatar>
-            <h3 className="text-2xl font-bold text-gray-900 mb-1">
+            <h3 className="text-2xl font-bold text-gray-900 mb-1" style={{ fontFamily: 'Georgia, serif' }}>
               {fullName}
             </h3>
             <p className="text-gray-600">
@@ -125,8 +132,8 @@ export function PortalProfile({
           {/* Details Grid */}
           <div className="space-y-4">
             {/* Profession */}
-            <div className="bg-gray-50 rounded-lg p-4">
-              <div className="text-sm text-gray-500 mb-1">Profession</div>
+            <div className="bg-red-50 rounded-lg p-4 border border-red-100">
+              <div className="text-sm text-red-600 mb-1 font-semibold">Profession</div>
               <div className="font-medium text-gray-900">
                 {candidate.designation}
               </div>
@@ -134,15 +141,15 @@ export function PortalProfile({
             </div>
 
             {/* Education */}
-            <div className="bg-gray-50 rounded-lg p-4">
-              <div className="text-sm text-gray-500 mb-1">Education</div>
+            <div className="bg-pink-50 rounded-lg p-4 border border-pink-100">
+              <div className="text-sm text-pink-600 mb-1 font-semibold">Education</div>
               <div className="font-medium text-gray-900">{candidate.degree}</div>
               <div className="text-sm text-gray-600">{candidate.undergradCollege}</div>
             </div>
 
             {/* About */}
-            <div className="bg-gray-50 rounded-lg p-4">
-              <div className="text-sm text-gray-500 mb-2">About</div>
+            <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+              <div className="text-sm text-gray-600 mb-2 font-semibold">About</div>
               <div className="grid grid-cols-2 gap-2 text-sm">
                 <div>
                   <span className="text-gray-600">Religion:</span>{' '}
@@ -176,10 +183,10 @@ export function PortalProfile({
         {/* Matchmaker's Note */}
         {introEmail && (
           <div className="mb-8">
-            <div className="text-center text-sm text-gray-500 mb-3">
+            <div className="text-center text-sm text-gray-500 mb-3" style={{ fontFamily: 'Georgia, serif' }}>
               ── A note from your matchmaker ──
             </div>
-            <div className="bg-[#faf8ff] border-l-4 border-purple-500 rounded-r-lg p-6">
+            <div className="bg-red-50 border-l-4 border-red-500 rounded-r-lg p-6">
               <p className="text-gray-700 italic leading-relaxed whitespace-pre-line">
                 {introEmail}
               </p>
@@ -189,7 +196,7 @@ export function PortalProfile({
 
         {/* Response Section */}
         <div className="mb-8">
-          <div className="text-center text-sm text-gray-500 mb-4">
+          <div className="text-center text-sm text-gray-500 mb-4" style={{ fontFamily: 'Georgia, serif' }}>
             ── How do you feel? ──
           </div>
           <ResponseButtons onRespond={handleResponse} />
@@ -197,9 +204,9 @@ export function PortalProfile({
       </div>
 
       {/* Footer */}
-      <div className="bg-[#1a1a2e] px-6 py-6 text-center mt-12">
+      <div className="bg-white border-t border-gray-100 px-6 py-6 text-center mt-12">
         <p className="text-gray-500 text-xs">
-          © 2025 The Date Crew · Crafting meaningful connections
+          © 2024 BYvowed · Crafting meaningful connections
         </p>
       </div>
     </div>

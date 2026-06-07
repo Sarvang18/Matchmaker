@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Progress } from '@/components/ui/progress';
 
 interface ScoreBarProps {
   score: number;
@@ -19,7 +18,7 @@ export function ScoreBar({ score, label, showLabel = true }: ScoreBarProps) {
 
   const getColor = () => {
     if (score >= 85) return 'bg-gradient-to-r from-yellow-500 to-amber-500';
-    if (score >= 70) return 'bg-gradient-to-r from-purple-500 to-indigo-500';
+    if (score >= 70) return 'bg-gradient-to-r from-red-500 to-pink-600';
     if (score >= 50) return 'bg-gradient-to-r from-teal-500 to-cyan-500';
     return 'bg-gray-400';
   };

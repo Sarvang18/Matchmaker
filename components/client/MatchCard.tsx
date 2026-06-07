@@ -151,7 +151,7 @@ export function MatchCard({
         <Button
           onClick={handleSendMatch}
           disabled={label === 'LOW'}
-          className="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 disabled:opacity-50 disabled:cursor-not-allowed"
           title={label === 'LOW' ? 'Score too low to send' : 'Send this match'}
         >
           <Send className="w-4 h-4 mr-2" />

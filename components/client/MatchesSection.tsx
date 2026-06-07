@@ -166,11 +166,11 @@ export function MatchesSection({
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shadow-lg">
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-red-500 to-pink-600 flex items-center justify-center shadow-lg">
             <Trophy className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Suggested Matches</h2>
+            <h2 className="text-2xl font-bold text-gray-900" style={{ fontFamily: 'Georgia, serif' }}>Suggested Matches</h2>
             <p className="text-sm text-gray-600 mt-0.5">
               {hasRun ? (
                 <>
@@ -190,7 +190,7 @@ export function MatchesSection({
             onClick={handleFindMatches}
             disabled={isLoading}
             size="lg"
-            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 shadow-lg"
+            className="bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 shadow-lg"
           >
             {isLoading ? (
               <>
@@ -209,7 +209,7 @@ export function MatchesSection({
 
       {/* Loading State */}
       {isLoading && (
-        <Card className="p-8 bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200">
+        <Card className="p-8 bg-gradient-to-br from-red-50 to-pink-50 border-2 border-red-200">
           <div className="max-w-md mx-auto">
             <MatchLoadingSteps />
           </div>
@@ -224,7 +224,7 @@ export function MatchesSection({
             <div>
               <div className="flex items-center gap-2 mb-6">
                 <Trophy className="w-5 h-5 text-yellow-500" />
-                <h3 className="text-lg font-semibold text-gray-900">Top 3 Matches</h3>
+                <h3 className="text-lg font-semibold text-gray-900" style={{ fontFamily: 'Georgia, serif' }}>Top 3 Matches</h3>
                 <span className="text-sm text-gray-500">• Highest compatibility</span>
               </div>
               <PodiumMatches matches={top3Matches} onSendMatch={handleSendMatch} />
@@ -240,11 +240,11 @@ export function MatchesSection({
 
       {/* Empty State */}
       {!isLoading && !hasRun && (
-        <Card className="text-center py-16 bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-dashed border-purple-200">
-          <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shadow-lg">
+        <Card className="text-center py-16 bg-gradient-to-br from-red-50 to-pink-50 border-2 border-dashed border-red-200">
+          <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-red-500 to-pink-600 flex items-center justify-center shadow-lg">
             <Sparkles className="w-10 h-10 text-white" />
           </div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-2">
+          <h3 className="text-xl font-semibold text-gray-900 mb-2" style={{ fontFamily: 'Georgia, serif' }}>
             Ready to find compatible matches?
           </h3>
           <p className="text-gray-600 mb-8 max-w-md mx-auto">
@@ -253,7 +253,7 @@ export function MatchesSection({
           <Button
             onClick={handleFindMatches}
             size="lg"
-            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 shadow-lg"
+            className="bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 shadow-lg"
           >
             <Sparkles className="w-5 h-5 mr-2" />
             Find Matches Now
@@ -270,7 +270,7 @@ export function MatchesSection({
       {/* Match History Section */}
       {displayMatches.length > 0 && (
         <div className="pt-8 border-t">
-          <h2 className="text-xl font-bold text-gray-900 mb-2">Match History</h2>
+          <h2 className="text-xl font-bold text-gray-900 mb-2" style={{ fontFamily: 'Georgia, serif' }}>Match History</h2>
           <p className="text-sm text-gray-600 mb-6">
             Matches that have been sent to this client
           </p>

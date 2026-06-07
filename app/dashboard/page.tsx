@@ -51,9 +51,9 @@ export default async function DashboardPage() {
   }));
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-gradient-to-br from-gray-50 via-red-50/30 to-pink-50/30">
       <Sidebar />
-      <div className="flex-1 ml-60">
+      <div className="flex-1 ml-64 p-8">
         <DashboardClient
           clients={serializedClients}
           stats={{

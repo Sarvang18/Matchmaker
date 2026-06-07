@@ -112,7 +112,7 @@ export function MatchHistory({ matches }: MatchHistoryProps) {
                   {match.candidate.firstName} {match.candidate.lastName}
                 </TableCell>
                 <TableCell className="text-center">
-                  <span className="font-semibold text-purple-600">
+                  <span className="font-semibold text-red-600">
                     {match.totalScore ?? '—'}
                   </span>
                 </TableCell>

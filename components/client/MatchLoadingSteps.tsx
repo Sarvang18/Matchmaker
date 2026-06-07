@@ -42,7 +42,7 @@ export function MatchLoadingSteps() {
                 isComplete
                   ? 'bg-green-500'
                   : isCurrent
-                  ? 'bg-purple-500 animate-pulse'
+                  ? 'bg-red-500 animate-pulse'
                   : 'bg-gray-200'
               }`}
             >
@@ -61,7 +61,7 @@ export function MatchLoadingSteps() {
                 isComplete
                   ? 'text-green-700 font-medium'
                   : isCurrent
-                  ? 'text-purple-700 font-semibold'
+                  ? 'text-red-700 font-semibold'
                   : 'text-gray-400'
               }`}
             >

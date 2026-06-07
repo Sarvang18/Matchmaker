@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import {
   Accordion,
   AccordionContent,
@@ -10,7 +9,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { MapPin, Briefcase, IndianRupee, ChevronDown, Send } from 'lucide-react';
+import { MapPin, Briefcase, IndianRupee, Send } from 'lucide-react';
 import { DimensionBars } from './DimensionBars';
 
 interface RemainingMatch {
@@ -76,7 +75,7 @@ export function RemainingMatches({ matches, onSendMatch }: RemainingMatchesProps
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold text-gray-900">
+        <h3 className="text-lg font-semibold text-gray-900" style={{ fontFamily: 'Georgia, serif' }}>
           Other Matches ({matches.length})
         </h3>
         <p className="text-sm text-gray-500">Click to expand details</p>
@@ -129,7 +128,7 @@ export function RemainingMatches({ matches, onSendMatch }: RemainingMatchesProps
 
                 {/* Score */}
                 <div className="flex-shrink-0 text-right">
-                  <div className="text-2xl font-bold text-purple-600">
+                  <div className="text-2xl font-bold text-red-600">
                     {Math.round(match.totalScore)}
                   </div>
                   <div className="text-xs text-gray-500">Score</div>
@@ -143,7 +142,7 @@ export function RemainingMatches({ matches, onSendMatch }: RemainingMatchesProps
                 <div>
                   <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full transition-all duration-700 ease-out"
+                      className="h-full bg-gradient-to-r from-red-500 to-pink-600 rounded-full transition-all duration-700 ease-out"
                       style={{ width: `${match.totalScore}%` }}
                     />
                   </div>
@@ -152,21 +151,21 @@ export function RemainingMatches({ matches, onSendMatch }: RemainingMatchesProps
                 {/* Detailed Info */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
                   <div className="flex items-center gap-2 text-gray-700">
-                    <Briefcase className="w-4 h-4 text-purple-500 flex-shrink-0" />
+                    <Briefcase className="w-4 h-4 text-red-500 flex-shrink-0" />
                     <div>
                       <div className="font-medium">{match.candidate.designation}</div>
                       <div className="text-xs text-gray-500">{match.candidate.currentCompany}</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-2 text-gray-700">
-                    <IndianRupee className="w-4 h-4 text-purple-500 flex-shrink-0" />
+                    <IndianRupee className="w-4 h-4 text-red-500 flex-shrink-0" />
                     <div>
                       <div className="font-medium">{formatIncome(match.candidate.income)}</div>
                       <div className="text-xs text-gray-500">Annual Income</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-2 text-gray-700">
-                    <MapPin className="w-4 h-4 text-purple-500 flex-shrink-0" />
+                    <MapPin className="w-4 h-4 text-red-500 flex-shrink-0" />
                     <div>
                       <div className="font-medium">{match.candidate.religion}</div>
                       <div className="text-xs text-gray-500">{match.candidate.caste}</div>
@@ -176,7 +175,7 @@ export function RemainingMatches({ matches, onSendMatch }: RemainingMatchesProps
 
                 {/* Dimension Scores */}
                 <div className="pt-3 border-t">
-                  <h5 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">
+                  <h5 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3" style={{ fontFamily: 'Georgia, serif' }}>
                     Compatibility Breakdown
                   </h5>
                   <DimensionBars scores={match.dimensionScores} compact />
@@ -185,12 +184,12 @@ export function RemainingMatches({ matches, onSendMatch }: RemainingMatchesProps
                 {/* AI Explanation */}
                 {match.aiExplanation && (
                   <div className="pt-3 mt-3 border-t">
-                    <div className="flex items-start gap-2 p-3 bg-purple-50 bg-opacity-50 rounded-lg">
+                    <div className="flex items-start gap-2 p-3 bg-red-50 bg-opacity-50 rounded-lg">
                       <span className="text-base">✨</span>
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
-                          <span className="text-xs font-semibold text-purple-700 uppercase">AI Insight</span>
-                          <span className="text-xs text-purple-500">Gemini</span>
+                          <span className="text-xs font-semibold text-red-700 uppercase">AI Insight</span>
+                          <span className="text-xs text-red-500">Gemini</span>
                         </div>
                         <p className="text-xs text-gray-700 italic leading-relaxed">
                           {match.aiExplanation}
@@ -205,7 +204,7 @@ export function RemainingMatches({ matches, onSendMatch }: RemainingMatchesProps
                   <div className="pt-3 mt-3">
                     <Button
                       onClick={() => onSendMatch(match)}
-                      className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+                      className="w-full bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700"
                       size="sm"
                     >
                       <Send className="w-4 h-4 mr-2" />

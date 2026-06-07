@@ -66,20 +66,18 @@ export function BiodataCard({ client }: BiodataCardProps) {
   };
 
   return (
-    <Card className="p-6 sticky top-8">
+    <Card className="p-6 sticky top-8 shadow-lg border border-gray-100">
       {/* Avatar */}
       <div className="flex justify-center mb-4">
         <div
-          className={`w-24 h-24 rounded-full flex items-center justify-center text-white text-3xl font-bold ${getInitialsColor(
-            fullName
-          )}`}
+          className="w-24 h-24 rounded-full flex items-center justify-center text-white text-3xl font-bold bg-gradient-to-br from-red-500 to-pink-600 shadow-lg"
         >
           {initials}
         </div>
       </div>
 
       {/* Name and Age */}
-      <h2 className="text-2xl font-bold text-center text-gray-900">{fullName}</h2>
+      <h2 className="text-2xl font-bold text-center text-gray-900" style={{ fontFamily: 'Georgia, serif' }}>{fullName}</h2>
       <p className="text-center text-gray-600 mt-1">
         {age} years • {client.city}
       </p>
@@ -91,7 +89,7 @@ export function BiodataCard({ client }: BiodataCardProps) {
           value={status}
           onChange={(e) => handleStatusChange(e.target.value as ClientStatus)}
           disabled={isUpdating}
-          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
+          className="w-full px-3 py-2 border border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-red-300 transition-colors"
         >
           <option value="ONBOARDED">Onboarded</option>
           <option value="ACTIVE">Active</option>
@@ -120,7 +118,7 @@ export function BiodataCard({ client }: BiodataCardProps) {
       {/* Find Matches Button */}
       <Button
         onClick={handleFindMatches}
-        className="w-full mt-6 bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700"
+        className="w-full mt-6 bg-gradient-to-r from-red-500 to-pink-600 hover:shadow-xl transition-all"
         title="Scroll to matches section"
       >
         <Sparkles className="w-4 h-4 mr-2" />

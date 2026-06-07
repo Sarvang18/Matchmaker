@@ -50,8 +50,8 @@ function Field({ label, value }: { label: string; value: string | number | null 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="mb-6">
-      <h3 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide flex items-center">
-        <span className="w-1 h-5 bg-purple-600 mr-3"></span>
+      <h3 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide flex items-center" style={{ fontFamily: 'Georgia, serif' }}>
+        <span className="w-1 h-5 bg-red-600 mr-3"></span>
         {title}
       </h3>
       <div className="space-y-0">{children}</div>
@@ -61,7 +61,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 
 export function BiodataFields({ client }: BiodataFieldsProps) {
   return (
-    <Card className="p-6">
+    <Card className="p-6 shadow-lg border border-gray-100">
       {/* Personal Information */}
       <Section title="Personal Information">
         <Field label="Full Name" value={`${client.firstName} ${client.lastName}`} />
