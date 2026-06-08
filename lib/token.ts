@@ -33,6 +33,11 @@ export function verifyMagicToken(token: string): MagicLinkPayload | null {
  * Build the full magic link URL
  */
 export function buildMagicLink(token: string): string {
-  const baseUrl = process.env.NEXTAUTH_URL || 'http://localhost:3000';
+  const baseUrl = process.env.NEXTAUTH_URL;
+  
+  if (!baseUrl) {
+    throw new Error('NEXTAUTH_URL environment variable is required for magic links');
+  }
+  
   return `${baseUrl}/match/${token}`;
 }

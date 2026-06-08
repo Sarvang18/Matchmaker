@@ -85,7 +85,9 @@ export async function POST(
 
       if (reverseMatch) {
         // MUTUAL INTEREST! Update both clients' status
-        console.log('💚 MUTUAL INTEREST DETECTED!');
+        if (process.env.NODE_ENV === 'development') {
+          console.log('💚 Mutual interest detected between clients');
+        }
         
         await prisma.client.update({
           where: { id: match.clientId },

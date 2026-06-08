@@ -102,9 +102,10 @@ export async function POST(
     // Send email via Resend
     const candidateAge = calculateAge(match.matchedWith.dateOfBirth);
     
-    console.log('🔔 Attempting to send match email...');
-    console.log('   To:', match.client.email);
-    console.log('   Candidate:', `${match.matchedWith.firstName} ${match.matchedWith.lastName}`);
+    if (process.env.NODE_ENV === 'development') {
+      console.log('🔔 Sending match email to:', match.client.email);
+      console.log('   Candidate:', `${match.matchedWith.firstName} ${match.matchedWith.lastName}`);
+    }
     
     const emailSent = await sendMatchEmail({
       toEmail: match.client.email,
@@ -118,7 +119,9 @@ export async function POST(
       introEmailBody: introEmail,
     });
     
-    console.log('📧 Email sent result:', emailSent ? '✅ SUCCESS' : '❌ FAILED');
+    if (process.env.NODE_ENV === 'development') {
+      console.log('📧 Email sent:', emailSent ? 'SUCCESS' : 'FAILED');
+    }
 
     return NextResponse.json({
       success: true,

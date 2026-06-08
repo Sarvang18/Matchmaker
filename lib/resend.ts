@@ -28,7 +28,9 @@ export interface SendMatchEmailParams {
  */
 export async function sendMatchEmail(params: SendMatchEmailParams): Promise<boolean> {
   try {
-    console.log('📤 Gmail SMTP sending email to:', params.toEmail);
+    if (process.env.NODE_ENV === 'development') {
+      console.log('📤 Sending email via Gmail SMTP to:', params.toEmail);
+    }
     
     await transporter.sendMail({
       from: `The Date Crew <${FROM}>`,
@@ -37,10 +39,12 @@ export async function sendMatchEmail(params: SendMatchEmailParams): Promise<bool
       html: buildMatchEmailHTML(params),
     });
     
-    console.log('✅ Email sent successfully via Gmail SMTP');
+    if (process.env.NODE_ENV === 'development') {
+      console.log('✅ Email sent successfully');
+    }
     return true;
   } catch (error) {
-    console.error('❌ Gmail SMTP email failed:', error);
+    console.error('❌ Gmail SMTP error:', error);
     return false;
   }
 }

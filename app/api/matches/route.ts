@@ -65,14 +65,14 @@ export async function POST(request: Request) {
     const scoredCandidates = runMatchingEngine(client, candidatePool, []);
 
     // Call Gemini AI to rank matches with explanations
-    console.log('🤖 Calling Gemini AI for', scoredCandidates.length, 'candidates...');
     const aiRankedMatches = await rankMatchesWithAI(client, scoredCandidates);
-    console.log('✨ Gemini returned', aiRankedMatches.length, 'ranked matches');
     
-    if (aiRankedMatches.length > 0) {
-      console.log('📝 Sample AI explanation:', aiRankedMatches[0].aiExplanation.substring(0, 100) + '...');
-    } else {
-      console.warn('⚠️ Gemini returned empty array - using fallbacks');
+    if (process.env.NODE_ENV === 'development') {
+      console.log('🤖 Gemini processed', scoredCandidates.length, 'candidates');
+      console.log('✨ Returned', aiRankedMatches.length, 'ranked matches');
+      if (aiRankedMatches.length > 0) {
+        console.log('📝 Sample explanation:', aiRankedMatches[0].aiExplanation.substring(0, 100) + '...');
+      }
     }
 
     // Save new matches to database with AI-enriched data
@@ -83,7 +83,7 @@ export async function POST(request: Request) {
           ai => ai.matchedWithId === scored.client.id
         );
 
-        if (!aiRanking) {
+        if (!aiRanking && process.env.NODE_ENV === 'development') {
           console.warn('⚠️ No AI ranking found for candidate:', scored.client.firstName, scored.client.id);
         }
 

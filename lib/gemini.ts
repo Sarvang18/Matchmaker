@@ -63,11 +63,14 @@ export async function rankMatchesWithAI(
     }));
   };
 
-  // TEMPORARILY DISABLED - API key configuration issue
-  console.warn('⚠️ Gemini AI is temporarily disabled - using fallback explanations');
-  return fallback();
+  // Check if API key is configured
+  if (!process.env.GEMINI_API_KEY) {
+    if (process.env.NODE_ENV === 'development') {
+      console.warn('⚠️ GEMINI_API_KEY not configured - using fallback explanations');
+    }
+    return fallback();
+  }
 
-  /* UNCOMMENT WHEN API KEY IS FIXED
   try {
     // Rate limiting protection - wait 1 second before calling
     await new Promise(r => setTimeout(r, 1000));
@@ -134,7 +137,7 @@ Respond ONLY in this exact JSON format, no markdown, no preamble:
 }`;
 
     const model = genAI.getGenerativeModel({ 
-      model: 'gemini-pro',
+      model: 'gemini-2.0-flash-exp',
       generationConfig: {
         maxOutputTokens: 4000,
         temperature: 0.7,
@@ -152,7 +155,9 @@ Respond ONLY in this exact JSON format, no markdown, no preamble:
     const parsed = JSON.parse(text);
 
     if (!parsed.rankings || !Array.isArray(parsed.rankings)) {
-      console.error('Invalid Gemini response format:', parsed);
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Invalid Gemini response format:', parsed);
+      }
       return fallback();
     }
 
@@ -165,14 +170,14 @@ Respond ONLY in this exact JSON format, no markdown, no preamble:
     }));
 
   } catch (error) {
-    console.error('Gemini rankMatchesWithAI error:', error);
-    if (error instanceof Error) {
-      console.error('Error message:', error.message);
-      console.error('Error stack:', error.stack);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Gemini rankMatchesWithAI error:', error);
+      if (error instanceof Error) {
+        console.error('Error message:', error.message);
+      }
     }
     return fallback();
   }
-  */
 }
 
 /**
@@ -235,7 +240,7 @@ Open to Relocate: ${formatEnum(candidate.openToRelocate)}
 Write ONLY the email body text. No subject line. No markdown. Just the plain email body starting with "Dear ${client.firstName},"`;
 
     const model = genAI.getGenerativeModel({ 
-      model: 'gemini-pro',
+      model: 'gemini-2.0-flash-exp',
       generationConfig: {
         maxOutputTokens: 1000,
         temperature: 0.8,

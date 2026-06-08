@@ -53,6 +53,18 @@ export async function POST(request: Request) {
 
     const data = validation.data;
 
+    // Check for duplicate email
+    const existingClient = await prisma.client.findUnique({
+      where: { email: data.email },
+    });
+
+    if (existingClient) {
+      return NextResponse.json(
+        { error: 'A client with this email already exists' },
+        { status: 409 }
+      );
+    }
+
     // Get default matchmaker (first one)
     const defaultMatchmaker = await prisma.matchmaker.findFirst();
 
